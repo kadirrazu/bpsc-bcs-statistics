@@ -418,4 +418,83 @@ class ReportDataController extends Controller
 
     }
 
+    public function ageWiseAllRegisteredCandidates()
+    {
+        $configs = Config::all();
+
+        $ageWise = DB::table(DB::raw("
+                        (
+                            SELECT
+                                *,
+                                TIMESTAMPDIFF(YEAR, dob, '2025-05-01') AS age
+                            FROM registrations48
+                            WHERE dob IS NOT NULL
+                        ) t
+                    "))
+                    ->select(
+                        DB::raw("
+                            CASE
+                                WHEN age BETWEEN 21 AND 23 THEN '21 - 23'
+                                WHEN age BETWEEN 24 AND 26 THEN '24 - 26'
+                                WHEN age BETWEEN 27 AND 29 THEN '27 - 29'
+                                WHEN age BETWEEN 30 AND 32 THEN '30 - 32'
+                                ELSE 'Other'
+                            END AS age_group
+                        "),
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN gender = 1 THEN 1 ELSE 0 END) as male"),
+                        DB::raw("SUM(CASE WHEN gender = 2 THEN 1 ELSE 0 END) as female"),
+                        DB::raw("SUM(CASE WHEN gender = 3 THEN 1 ELSE 0 END) as third_gender")
+                    )
+                    ->groupBy('age_group')
+                    ->orderBy('age_group')
+                    ->get();
+        
+        return view('reports.age-wise-registered',[
+            'configs' => $configs,
+            'ageWise' => $ageWise,
+        ]);
+        
+    }
+
+
+    public function ageWiseAllSelectedCandidates()
+    {
+        $configs = Config::all();
+
+        $ageWise = DB::table(DB::raw("
+                        (
+                            SELECT
+                                *,
+                                TIMESTAMPDIFF(YEAR, dob, '2025-05-01') AS age
+                            FROM results48
+                            WHERE dob IS NOT NULL
+                        ) t
+                    "))
+                    ->select(
+                        DB::raw("
+                            CASE
+                                WHEN age BETWEEN 21 AND 23 THEN '21 - 23'
+                                WHEN age BETWEEN 24 AND 26 THEN '24 - 26'
+                                WHEN age BETWEEN 27 AND 29 THEN '27 - 29'
+                                WHEN age BETWEEN 30 AND 32 THEN '30 - 32'
+                                ELSE 'Other'
+                            END AS age_group
+                        "),
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN gender = 1 THEN 1 ELSE 0 END) as male"),
+                        DB::raw("SUM(CASE WHEN gender = 2 THEN 1 ELSE 0 END) as female"),
+                        DB::raw("SUM(CASE WHEN gender = 3 THEN 1 ELSE 0 END) as third_gender")
+                    )
+                    ->groupBy('age_group')
+                    ->orderBy('age_group')
+                    ->get();
+        
+        return view('reports.age-wise-selected',[
+            'configs' => $configs,
+            'ageWise' => $ageWise,
+        ]);
+        
+    }
+
 }

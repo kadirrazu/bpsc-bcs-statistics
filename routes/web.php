@@ -25,3 +25,6 @@ Route::get('/geneder-wise-selected-division-wise', [ReportDataController::class,
 
 Route::get('/geneder-wise-selected-institute-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesInstituteWise']);
 Route::get('/geneder-wise-selected-others-institute-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesOthersInstituteWise']);
+
+Route::get('/age-wise-registered', [ReportDataController::class, 'ageWiseAllRegisteredCandidates']);
+Route::get('/age-wise-selected', [ReportDataController::class, 'ageWiseAllSelectedCandidates']);

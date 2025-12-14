@@ -65,6 +65,16 @@
                   ৮। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
                 </a>
               </li>
+              <li>
+                <a href="{{ url('/age-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                  ৮। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/age-wise-selected') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                  ৯। সুপারিশপ্রাপ্ত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                </a>
+              </li>
             </ul>
           </div>
         </div>
