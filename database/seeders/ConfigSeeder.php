@@ -19,6 +19,10 @@ class ConfigSeeder extends Seeder
                 'value' => 48,
             ],
             [
+                'field' => 'current_bcs_type',
+                'value' => 'Special',
+            ],
+            [
                 'field' => 'reg_all_table',
                 'value' => 'registrations48',
             ],

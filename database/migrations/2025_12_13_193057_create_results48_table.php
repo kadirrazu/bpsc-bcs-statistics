@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('g_inst_name')->nullable();
             $table->integer('graduation_year')->nullable();
             $table->integer('division_code')->nullable();
+            $table->string('cadre_category')->nullable();
             $table->string('merit_gen')->nullable();
             $table->string('p_f')->nullable();
             $table->string('post_name')->nullable();

@@ -1,0 +1,62 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  
+  html {
+    font-size: 16px;
+  }
+
+  .mr-md-auto, .mx-md-auto {
+      margin-right: auto !important;
+  }
+
+}
+
+body {
+    font-family: 'Nikosh', sans-serif;
+    font-size: 18px;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.fs-menu-item a{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.report-container{
+  padding-top: 20px;
+}
+
+.insight-table{
+  max-width: 400px;
+}
+
+.insight-table th{
+  text-align: right;
+}
+
+.fs-expanded{
+  font-size: 18px;
+}
+
+.subscript-small{
+  font-size: 10px;
+}
