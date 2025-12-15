@@ -20,6 +20,9 @@ Route::get('/geneder-wise-selected', [ReportDataController::class, 'genderWiseAl
 Route::get('/geneder-wise-registered-district-wise', [ReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWise']);
 Route::get('/geneder-wise-selected-district-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesDistrctWise']);
 
+Route::get('/geneder-wise-registered-district-wise-div-group', [ReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWiseDivGroup']);
+Route::get('/geneder-wise-selected-district-wise-div-group', [ReportDataController::class, 'genderWiseAllSelectedCandidatesDistrctWiseDivGroup']);
+
 Route::get('/geneder-wise-registered-division-wise', [ReportDataController::class, 'genderWiseAllRegisteredCandidatesDivisionWise']);
 Route::get('/geneder-wise-selected-division-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesDivisionWise']);
 

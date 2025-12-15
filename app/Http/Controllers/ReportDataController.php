@@ -187,6 +187,143 @@ class ReportDataController extends Controller
 
     }
 
+
+    public function genderWiseAllRegisteredCandidatesDistrctWiseDivGroup()
+    {
+        $configs = Config::all();
+
+        $districtWise = DB::table('registrations48')
+                    ->join('districts', 'registrations48.district_code', '=', 'districts.code')
+                    ->join('divisions', 'registrations48.division_code', '=', 'divisions.code')
+                    ->select(
+                        'registrations48.district_code',
+                        'districts.name',
+                        'registrations48.division_code',
+                        'divisions.name as div_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN registrations48.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN registrations48.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN registrations48.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->groupBy(
+                        'registrations48.district_code',
+                        'districts.name',
+                        'registrations48.division_code',
+                        'divisions.name',
+                    )
+                    ->orderBy('divisions.code')
+                    ->orderBy('districts.code')
+                    ->get();
+
+
+        $districtWiseTotal = DB::table('registrations48')
+                    ->join('districts', 'registrations48.district_code', '=', 'districts.code')
+                    ->join('divisions', 'registrations48.division_code', '=', 'divisions.code')
+                    ->select(
+                        'registrations48.district_code',
+                        'districts.name',
+                        'registrations48.division_code',
+                        'divisions.name as div_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN registrations48.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN registrations48.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN registrations48.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->groupBy(
+                        'registrations48.district_code',
+                        'districts.name',
+                        'registrations48.division_code',
+                        'divisions.name',
+                    );
+
+
+        $grandTotal = DB::query()
+                        ->fromSub($districtWiseTotal, 't')
+                        ->select(
+                            DB::raw('SUM(total) as grand_total'),
+                            DB::raw('SUM(total_male) as grand_male'),
+                            DB::raw('SUM(total_female) as grand_female'),
+                            DB::raw('SUM(total_third_gender) as grand_third_gender'),
+                        )
+                        ->first();
+        
+        return view('reports.gender-wise-registered-distrct-wise-div-group',[
+            'configs' => $configs,
+            'districtWise' => $districtWise,
+            'grandTotal' => $grandTotal,
+        ]);
+        
+    }
+
+
+    public function genderWiseAllSelectedCandidatesDistrctWiseDivGroup()
+    {
+        $configs = Config::all();
+
+        $districtWise = DB::table('results48')
+                    ->join('districts', 'results48.district_code', '=', 'districts.code')
+                    ->join('divisions', 'results48.division_code', '=', 'divisions.code')
+                    ->select(
+                        'results48.district_code',
+                        'districts.name',
+                        'results48.division_code',
+                        'divisions.name as div_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN results48.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN results48.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN results48.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->groupBy(
+                        'results48.district_code',
+                        'districts.name',
+                        'results48.division_code',
+                        'divisions.name',
+                    )
+                    ->orderBy('divisions.code')
+                    ->orderBy('districts.code')
+                    ->get();
+
+
+        $districtWiseTotal = DB::table('results48')
+                    ->join('districts', 'results48.district_code', '=', 'districts.code')
+                    ->join('divisions', 'results48.division_code', '=', 'divisions.code')
+                    ->select(
+                        'results48.district_code',
+                        'districts.name',
+                        'results48.division_code',
+                        'divisions.name as div_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN results48.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN results48.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN results48.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->groupBy(
+                        'results48.district_code',
+                        'districts.name',
+                        'results48.division_code',
+                        'divisions.name',
+                    );
+
+
+        $grandTotal = DB::query()
+                        ->fromSub($districtWiseTotal, 't')
+                        ->select(
+                            DB::raw('SUM(total) as grand_total'),
+                            DB::raw('SUM(total_male) as grand_male'),
+                            DB::raw('SUM(total_female) as grand_female'),
+                            DB::raw('SUM(total_third_gender) as grand_third_gender'),
+                        )
+                        ->first();
+        
+        return view('reports.gender-wise-selected-distrct-wise-div-group',[
+            'configs' => $configs,
+            'districtWise' => $districtWise,
+            'grandTotal' => $grandTotal,
+        ]);
+        
+    }
+
+
     public function genderWiseAllRegisteredCandidatesDivisionWise()
     {
         $configs = Config::all();

@@ -46,33 +46,43 @@
                 </a>
               </li>
               <li>
+                <a href="{{ url('/geneder-wise-registered-district-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                  ৫। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/geneder-wise-selected-district-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                  ৬। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
+                </a>
+              </li>
+              <li>
                 <a href="{{ url('/geneder-wise-registered-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৫। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
+                  ৭। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৬। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
+                  ৮। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৭। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
+                  ৯। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-others-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৮। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
+                  ১০। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/age-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৮। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                  ১১। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
                 </a>
               </li>
               <li>
                 <a href="{{ url('/age-wise-selected') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৯। সুপারিশপ্রাপ্ত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                  ১২। সুপারিশপ্রাপ্ত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
                 </a>
               </li>
             </ul>
