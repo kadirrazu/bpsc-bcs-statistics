@@ -2,16 +2,36 @@
 
 <!-- Contents Starts Here -->
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <div class="pricing-header mx-auto text-center">
       <h3>বাংলাদেশ সরকারী কর্ম কমিশন সচিবালয় এর বার্ষিক প্রতিবেদন প্রণয়নের জন্য সহায়ক রিপোর্ট</h3>
-      <p">
-        নিচের ম্যেনু থেকে রিপোর্ট জেনারেট করা যাবে। সিস্টেম জেনারেটেড রিপোর্ট অবশ্যই প্রতিবেদনে প্রকাশের পূর্বে প্রতিবেদন প্রকাশের দায়িত্বপ্রাপ্ত সংশ্লিষ্ট ইউনিট তথ্যের সঠিকতা নিশ্চিত হয়ে তারপর প্রকাশ করবে।
-
-        রিপোর্ট সংক্রান্ত যে কোন অসঙ্গতির ক্ষেত্রে প্রতিবেদন প্রকাশের পূর্বে সংশ্লিষ্ট ইউনিট অবশ্যই তথ্য-প্রযুক্তি শাখায় বিস্তারিত জানাবে এবং তথ্য সংশোধনের উদ্যোগ নিবে।
+      <p class="text-start">
+        <strong>বিশেষ দ্রষ্টব্যঃ</strong> 
+        <br>
+        সিস্টেম জেনারেটেড রিপোর্ট অবশ্যই প্রতিবেদনে প্রকাশের পূর্বে প্রতিবেদন প্রকাশের দায়িত্বপ্রাপ্ত সংশ্লিষ্ট ইউনিট তথ্যের সঠিকতা নিশ্চিত হয়ে তারপর প্রকাশ করবে।
       </p>
       <p>
-        <h4>বর্তমান রিপোর্টের জন্য নির্ধারিত BCS: <span class="text-danger">{{ $configs->where('field', 'current_bcs')->first()['value'] }}</span></h4>
-        <h4>রিপোর্টের জন্য নির্ধারিত BCS এর ধরণ: <span class="text-danger">{{ $configs->where('field', 'current_bcs_type')->first()['value'] }}</span></h4>
+        <table class="table table-bordered">
+          <tr>
+            <th>রিপোর্টিং বিসিএস</th>
+            <td>
+              <span class="text-info">  
+                {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value']) }}
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th>রিপোর্টিং বিসিএস এর ধরণ</th>
+            <td>
+              <span class="text-info">
+                @if( strtolower( $configs->where('field', 'current_bcs_type')->first()['value'] ) == 'special' )
+                  বিশেষ বিসিএস
+                @else
+                  সাধারণ বিসিএস
+                @endif
+              </span>
+            </td>
+          </tr>
+        </table>
       </p>
     </div>
 
@@ -27,62 +47,67 @@
             <ul class="list-unstyled mt-3 mb-4 fs-menu-item">
               <li>
                 <a href="{{ url('/geneder-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
+                  ০১। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/geneder-wise-passed-preli') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                  ০২। প্রাথমিক বাছাই (প্রিলিমিনারী) পরীক্ষায় উত্তীর্ণ প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান 
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ২। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
+                  ০৩। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-registered-district-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৩। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক)
+                  ০৪। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-district-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৪। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক)
+                  ০৫। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-registered-district-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৫। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
+                  ০৬। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-district-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৬। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
+                  ০৭। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-registered-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৭। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
+                  ০৮। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৮। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
+                  ০৯। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ৯। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
+                  ১০। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/geneder-wise-selected-others-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১০। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
+                  ১১। সুপারিশপ্রাপ্ত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
                 </a>
               </li>
               <li>
                 <a href="{{ url('/age-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১১। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                  ১২। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
                 </a>
               </li>
               <li>
                 <a href="{{ url('/age-wise-selected') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১২। সুপারিশপ্রাপ্ত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                  ১৩। সুপারিশপ্রাপ্ত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
                 </a>
               </li>
             </ul>
