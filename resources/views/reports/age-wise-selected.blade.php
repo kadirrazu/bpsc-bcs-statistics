@@ -7,20 +7,19 @@
             <div class="col-md-12">
 
             <!-- Report Body -->
-
-            <h2 class="report-title">
-                <span>রিপোর্টের শিরোনামঃ</span> 
+            <h3 class="report-title fw-bolder">
+                <span>রিপোর্ট ১৩ - </span> 
                 <span class="text-info">
                     সুপারিশকৃত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
                 </span>
-            </h2>
+            </h3>
 
             <table class="table table-bordered insight-table">
                 <tr>
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
-                        <span class="text-danger fw-bold">
-                            {{ $configs->where('field', 'current_bcs')->first()['value'] }}
+                        <span class="text-danger fw-bold" style="font-size: 20px; ">
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
                         </span>
                     </td>
                 </tr>
@@ -28,7 +27,11 @@
                     <th>বিসিএস পরীক্ষার ধরণঃ</th>
                     <td>
                         <span class="text-danger fw-bold">
-                            {{ $configs->where('field', 'current_bcs_type')->first()['value'] }}
+                            @if( strtolower( $configs->where('field', 'current_bcs_type')->first()['value'] ) == 'special' )
+                                বিশেষ বিসিএস
+                            @else
+                                সাধারণ বিসিএস
+                            @endif
                         </span>
                     </td>
                 </tr>
@@ -37,7 +40,7 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="5">
-                        সুপারিশকৃত প্রার্থীর সংখ্যা
+                        সুপারিশকৃত প্রার্থীর সংখ্যা (বয়সভিত্তিক)
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
@@ -86,7 +89,7 @@
                         <br>
                         <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $age->third_gender / $age->total ) * 100) ) }}%</span>
                     </td>
-                    <td class="fw-bold">
+                    <td class="text-total">
                         {{ en_to_bn_number( $age->total ) }}
                         @php $totalCount += $age->total; @endphp
                     </td>
@@ -96,19 +99,27 @@
 
                 <tr class="fw-bold text-center">
                     <td></td>
-                    <td>{{ en_to_bn_number($maleCount) }}</td>
-                    <td>{{ en_to_bn_number($femaleCount) }}</td>
-                    <td>{{ en_to_bn_number($tgCount) }}</td>
+                    <td>
+                        {{ en_to_bn_number($maleCount) }}
+                        <br>
+                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $maleCount / $totalCount ) * 100) ) }}%</span>
+                    </td>
+                    <td>
+                        {{ en_to_bn_number($femaleCount) }}
+                        <br>
+                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $femaleCount / $totalCount ) * 100) ) }}%</span>
+                    </td>
+                    <td>
+                        {{ en_to_bn_number($tgCount) }}
+                        <br>
+                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $tgCount / $totalCount ) * 100) ) }}%</span>
+                    </td>
                     <td>
                         {{ en_to_bn_number( $totalCount ) }}
                     </td>
                 </tr>
 
             </table>  
-
-            <br><br>
-
-            <!-- <a href="{{ url('/geneder-wise-registered-pdf-dl') }}" target="_blank" class="btn btn-primary">Export as PDF</a> -->
 
             <!-- Report Body Ends Here -->
 

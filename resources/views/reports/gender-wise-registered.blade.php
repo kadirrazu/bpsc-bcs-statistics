@@ -7,20 +7,19 @@
             <div class="col-md-12">
 
             <!-- Report Body -->
-
-            <h2 class="report-title">
-                <span>রিপোর্টের শিরোনামঃ</span> 
+            <h3 class="report-title fw-bolder">
+                <span>রিপোর্ট ০১ - </span> 
                 <span class="text-info">
                     আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
                 </span>
-            </h2>
+            </h3>
 
             <table class="table table-bordered insight-table">
                 <tr>
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
-                        <span class="text-danger fw-bold">
-                            {{ $configs->where('field', 'current_bcs')->first()['value'] }}
+                        <span class="text-danger fw-bold" style="font-size: 20px; ">
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
                         </span>
                     </td>
                 </tr>
@@ -28,7 +27,11 @@
                     <th>বিসিএস পরীক্ষার ধরণঃ</th>
                     <td>
                         <span class="text-danger fw-bold">
-                            {{ $configs->where('field', 'current_bcs_type')->first()['value'] }}
+                            @if( strtolower( $configs->where('field', 'current_bcs_type')->first()['value'] ) == 'special' )
+                                বিশেষ বিসিএস
+                            @else
+                                সাধারণ বিসিএস
+                            @endif
                         </span>
                     </td>
                 </tr>
@@ -76,15 +79,11 @@
                         <br>
                         <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $tgender / $total ) * 100) ) }}%</span>
                     </td>
-                    <td>
+                    <td class="text-total">
                         {{ en_to_bn_number( $total ) }}
                     </td>
                 </tr>
-            </table>  
-
-            <br><br>
-
-            <!-- <a href="{{ url('/geneder-wise-registered-pdf-dl') }}" target="_blank" class="btn btn-primary">Export as PDF</a> -->
+            </table>
 
             <!-- Report Body Ends Here -->
 

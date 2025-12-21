@@ -64,3 +64,8 @@ body {
 .subscript-small{
   font-size: 10px;
 }
+
+.text-total{
+  font-weight: bold;
+  color: purple;
+}

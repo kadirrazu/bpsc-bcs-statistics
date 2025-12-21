@@ -7,20 +7,19 @@
             <div class="col-md-12">
 
             <!-- Report Body -->
-
-            <h2 class="report-title">
-                <span>রিপোর্টের শিরোনামঃ</span> 
+            <h3 class="report-title fw-bolder">
+                <span>রিপোর্ট ০৫ - </span> 
                 <span class="text-info">
                     সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলা ভিত্তিক)
                 </span>
-            </h2>
+            </h3>
 
             <table class="table table-bordered insight-table">
                 <tr>
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
-                        <span class="text-danger fw-bold">
-                            {{ $configs->where('field', 'current_bcs')->first()['value'] }}
+                        <span class="text-danger fw-bold" style="font-size: 20px; ">
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
                         </span>
                     </td>
                 </tr>
@@ -28,7 +27,11 @@
                     <th>বিসিএস পরীক্ষার ধরণঃ</th>
                     <td>
                         <span class="text-danger fw-bold">
-                            {{ $configs->where('field', 'current_bcs_type')->first()['value'] }}
+                            @if( strtolower( $configs->where('field', 'current_bcs_type')->first()['value'] ) == 'special' )
+                                বিশেষ বিসিএস
+                            @else
+                                সাধারণ বিসিএস
+                            @endif
                         </span>
                     </td>
                 </tr>
@@ -43,7 +46,7 @@
                 <tr>
                     <th>সর্বমোট সুপারিশকৃত পুরুষ প্রার্থীঃ</th>
                     <td class="fw-bold">
-                        <span class="text-success fs-expanded">
+                        <span class="text-info fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_male ) }}
                         </span>
                     </td>
@@ -51,7 +54,7 @@
                 <tr>
                     <th>সর্বমোট সুপারিশকৃত মহিলা প্রার্থীঃ</th>
                     <td class="fw-bold">
-                        <span class="text-success fs-expanded">
+                        <span class="text-primary fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_female ) }}
                         </span>
                     </td>
@@ -59,7 +62,7 @@
                 <tr>
                     <th>সর্বমোট সুপারিশকৃত তৃতীয় লিঙ্গের প্রার্থীঃ</th>
                     <td class="fw-bold">
-                        <span class="text-success fs-expanded">
+                        <span class="text-secondary fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_third_gender ) }}
                         </span>
                     </td>
@@ -69,7 +72,7 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="6">
-                        সুপারিশকৃত প্রার্থীর সংখ্যা
+                        সুপারিশকৃত প্রার্থীর সংখ্যা (জেলা ভিত্তিক)
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
@@ -129,7 +132,7 @@
                             {{ en_to_bn_number( sprintf('%.2f', ( $district->total_third_gender / $district->total ) * 100) ) }}%
                         </span>
                     </td>
-                    <td class="fw-bold">
+                    <td class="text-total">
                         {{ en_to_bn_number( $district->total ) }}
                         @php $countTotal += $district->total  @endphp
                     </td>
@@ -165,9 +168,7 @@
                         {{ en_to_bn_number( $countTotal ) }}
                     </th>
                 </tr>
-            </table>  
-
-            <br><br>
+            </table>
 
             <!-- Report Body Ends Here -->
 

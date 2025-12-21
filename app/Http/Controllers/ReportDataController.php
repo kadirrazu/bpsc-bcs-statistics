@@ -31,6 +31,32 @@ class ReportDataController extends Controller
         ]);
     }
 
+    public function genderWisePreliPassedCandidates()
+    {
+        $configs = Config::all();
+        
+        $registered = DB::table('registrations48')->get();
+
+        $preliPassed = DB::table('registrations48')->get();
+
+        $totalRegistered = $registered->count();
+
+        $totalPreliPassed = $preliPassed->count();
+        
+        $male = $preliPassed->where('gender', 1)->count();
+        $female = $preliPassed->where('gender', 2)->count();
+        $tgender = $preliPassed->where('gender', 3)->count();
+        
+        return view('reports.gender-wise-preli-passed',[
+            'configs' => $configs,
+            'totalRegistered' => $totalRegistered,
+            'totalPreliPassed' => $totalPreliPassed,
+            'male' => $male,
+            'female' => $female,
+            'tgender' => $tgender,
+        ]);
+    }
+
     public function genderWiseAllRegisteredCandidatesPdf()
     {
         $configs = Config::all();

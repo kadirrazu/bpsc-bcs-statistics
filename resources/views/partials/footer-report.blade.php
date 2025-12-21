@@ -1,16 +1,4 @@
 
-<div class="row">
-    <div class="col-md-12">
-        <p class="fs-compressed text-center">
-            Software Developed By: <span class="fw-bold">ICT SECTION, BPSC</span>.
-            <br>
-            &copy; <?php echo '2025' . (date('Y') != '2025' ? ' - ' . date('Y') : ''); ?>
-            <span class="fw-bold">"ICT SECTION, BPSC"</span> All Rights Reserved.
-            
-        </p>
-    </div>
-</div>
-
 <!-- Scripts -->
 <script defer src="{{ asset('assets/js/alpine.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
