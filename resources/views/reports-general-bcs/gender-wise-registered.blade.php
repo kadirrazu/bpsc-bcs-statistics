@@ -7,11 +7,10 @@
             <div class="col-md-12">
 
             <!-- Report Body -->
-
             <h3 class="report-title fw-bolder">
-                <span>রিপোর্ট ০২ - </span> 
+                <span>রিপোর্ট ০১ - </span> 
                 <span class="text-info">
-                    প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
+                    আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
                 </span>
             </h3>
 
@@ -20,7 +19,7 @@
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
                         <span class="text-danger fw-bold" style="font-size: 20px; ">
-                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}তম
                         </span>
                     </td>
                 </tr>
@@ -40,15 +39,7 @@
                     <th>সর্বমোট আবেদনকারী প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-success fs-expanded">
-                            {{ en_to_bn_number( $totalRegistered ) }}
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <th>প্রিলিমিনারি পরীক্ষায় উত্তীর্ণ সর্বমোট প্রার্থীঃ</th>
-                    <td class="fw-bold">
-                        <span class="text-primary fs-expanded">
-                            {{ en_to_bn_number( $totalPreliPassed ) }}
+                            {{ en_to_bn_number( $total ) }}
                         </span>
                     </td>
                 </tr>
@@ -57,7 +48,7 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="4">
-                       প্রিলিমিনারি পরীক্ষায় উত্তীর্ণ প্রার্থীর সংখ্যা
+                        আবেদনকারী প্রার্থীর সংখ্যা
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
@@ -76,20 +67,20 @@
                     <td>
                         {{ en_to_bn_number( $male ) }}
                         <br>
-                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $male / $totalPreliPassed ) * 100) ) }}%</span>
+                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $male / $total ) * 100) ) }}%</span>
                     </td>
                     <td>
                         {{ en_to_bn_number( $female ) }}
                         <br>
-                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $female / $totalPreliPassed ) * 100) ) }}%</span>
+                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $female / $total ) * 100) ) }}%</span>
                     </td>
                     <td>
                         {{ en_to_bn_number( $tgender ) }}
                         <br>
-                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $tgender / $totalPreliPassed ) * 100) ) }}%</span>
+                        <span class="text-primary">{{ en_to_bn_number( sprintf('%.2f', ( $tgender / $total ) * 100) ) }}%</span>
                     </td>
                     <td class="text-total">
-                        {{ en_to_bn_number( $totalPreliPassed ) }}
+                        {{ en_to_bn_number( $total ) }}
                     </td>
                 </tr>
             </table>

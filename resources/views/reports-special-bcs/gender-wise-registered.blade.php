@@ -8,9 +8,9 @@
 
             <!-- Report Body -->
             <h3 class="report-title fw-bolder">
-                <span>রিপোর্ট ০৩ - </span> 
+                <span>রিপোর্ট ০১ - </span> 
                 <span class="text-info">
-                    সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
+                    আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
                 </span>
             </h3>
 
@@ -19,7 +19,7 @@
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
                         <span class="text-danger fw-bold" style="font-size: 20px; ">
-                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}তম
                         </span>
                     </td>
                 </tr>
@@ -36,7 +36,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সর্বমোট সুপারিশকৃত প্রার্থীঃ</th>
+                    <th>সর্বমোট আবেদনকারী প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-success fs-expanded">
                             {{ en_to_bn_number( $total ) }}
@@ -48,7 +48,7 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="4">
-                        সুপারিশকৃত প্রার্থীর সংখ্যা
+                        আবেদনকারী প্রার্থীর সংখ্যা
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
@@ -83,7 +83,7 @@
                         {{ en_to_bn_number( $total ) }}
                     </td>
                 </tr>
-            </table> 
+            </table>
 
             <!-- Report Body Ends Here -->
 

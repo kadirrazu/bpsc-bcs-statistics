@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ReportDataController;
+use App\Http\Controllers\SpecialBCSReportDataController;
+use App\Http\Controllers\GeneralBCSReportDataController;
 use App\Http\Controllers\ReportMenuController;
 
 //Helper Functions for Global Use
@@ -14,28 +15,37 @@ function en_to_bn_number($number) {
     return $converted_number;
 }
 
-/* Special BCS Handling Routes Starts Here */
 
 Route::get('/', [ReportMenuController::class, 'index']);
 
-Route::get('/geneder-wise-registered', [ReportDataController::class, 'genderWiseAllRegisteredCandidates']);
-Route::get('/geneder-wise-selected', [ReportDataController::class, 'genderWiseAllSelectedCandidates']);
 
-Route::get('/geneder-wise-passed-preli', [ReportDataController::class, 'genderWisePreliPassedCandidates']);
+/* Special BCS Handling Routes Starts Here */
 
-Route::get('/geneder-wise-registered-district-wise', [ReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWise']);
-Route::get('/geneder-wise-selected-district-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesDistrctWise']);
+Route::get('/sp-bcs-geneder-wise-registered', [SpecialBCSReportDataController::class, 'genderWiseAllRegisteredCandidates']);
+Route::get('/sp-bcs-geneder-wise-selected', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidates']);
 
-Route::get('/geneder-wise-registered-district-wise-div-group', [ReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWiseDivGroup']);
-Route::get('/geneder-wise-selected-district-wise-div-group', [ReportDataController::class, 'genderWiseAllSelectedCandidatesDistrctWiseDivGroup']);
+Route::get('/sp-bcs-geneder-wise-passed-preli', [SpecialBCSReportDataController::class, 'genderWisePreliPassedCandidates']);
 
-Route::get('/geneder-wise-registered-division-wise', [ReportDataController::class, 'genderWiseAllRegisteredCandidatesDivisionWise']);
-Route::get('/geneder-wise-selected-division-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesDivisionWise']);
+Route::get('/sp-bcs-geneder-wise-registered-district-wise', [SpecialBCSReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWise']);
+Route::get('/sp-bcs-geneder-wise-selected-district-wise', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesDistrctWise']);
 
-Route::get('/geneder-wise-selected-institute-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesInstituteWise']);
-Route::get('/geneder-wise-selected-others-institute-wise', [ReportDataController::class, 'genderWiseAllSelectedCandidatesOthersInstituteWise']);
+Route::get('/sp-bcs-geneder-wise-registered-district-wise-div-group', [SpecialBCSReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWiseDivGroup']);
+Route::get('/sp-bcs-geneder-wise-selected-district-wise-div-group', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesDistrctWiseDivGroup']);
 
-Route::get('/age-wise-registered', [ReportDataController::class, 'ageWiseAllRegisteredCandidates']);
-Route::get('/age-wise-selected', [ReportDataController::class, 'ageWiseAllSelectedCandidates']);
+Route::get('/sp-bcs-geneder-wise-registered-division-wise', [SpecialBCSReportDataController::class, 'genderWiseAllRegisteredCandidatesDivisionWise']);
+Route::get('/sp-bcs-geneder-wise-selected-division-wise', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesDivisionWise']);
+
+Route::get('/sp-bcs-geneder-wise-selected-institute-wise', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesInstituteWise']);
+Route::get('/sp-bcs-geneder-wise-selected-others-institute-wise', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesOthersInstituteWise']);
+
+Route::get('/sp-bcs-age-wise-registered', [SpecialBCSReportDataController::class, 'ageWiseAllRegisteredCandidates']);
+Route::get('/sp-bcs-age-wise-preli-passed', [SpecialBCSReportDataController::class, 'ageWisePreliPassedCandidates']);
+Route::get('/sp-bcs-age-wise-selected', [SpecialBCSReportDataController::class, 'ageWiseAllSelectedCandidates']);
 
 /* Special BCS Handling Routes Ends Here */
+
+/* General BCS Handling Routes Starts Here */
+
+Route::get('/gen-bcs-geneder-wise-registered', [GeneralBCSReportDataController::class, 'genderWiseAllRegisteredCandidates']);
+
+/* General BCS Handling Routes Ends Here */

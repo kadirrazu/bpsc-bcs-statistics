@@ -20,15 +20,11 @@ class ConfigSeeder extends Seeder
             ],
             [
                 'field' => 'current_bcs_type',
-                'value' => 'Special',
+                'value' => 'special',
             ],
             [
-                'field' => 'reg_all_table',
-                'value' => 'registrations48',
-            ],
-            [
-                'field' => 'select_all_table',
-                'value' => 'results48',
+                'field' => 'age_calculation_end_date',
+                'value' => '2025-05-01',
             ],
         ]);
     }

@@ -8,9 +8,9 @@
 
             <!-- Report Body -->
             <h3 class="report-title fw-bolder">
-                <span>রিপোর্ট ১২ - </span> 
+                <span>রিপোর্ট ১৩ - </span> 
                 <span class="text-info">
-                    আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                     প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
                 </span>
             </h3>
 
@@ -19,7 +19,7 @@
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
                         <span class="text-danger fw-bold" style="font-size: 20px; ">
-                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}তম
                         </span>
                     </td>
                 </tr>
@@ -40,7 +40,7 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="5">
-                        যোগ্য আবেদনকারী প্রার্থীর সংখ্যা (বয়সভিত্তিক)
+                        প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
@@ -119,7 +119,7 @@
                     </td>
                 </tr>
 
-            </table>
+            </table>  
 
             <!-- Report Body Ends Here -->
 

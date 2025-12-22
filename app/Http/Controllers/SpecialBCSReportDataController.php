@@ -8,7 +8,7 @@ use App\Models\Config;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 
-class ReportDataController extends Controller
+class SpecialBCSReportDataController extends Controller
 {
 
     public $registrationTable = ''; //reg-all
@@ -40,7 +40,7 @@ class ReportDataController extends Controller
         $female = $registered->where('gender', 2)->count();
         $tgender = $registered->where('gender', 3)->count();
         
-        return view('reports.gender-wise-registered',[
+        return view('reports-special-bcs.gender-wise-registered',[
             'configs' => $configs,
             'total' => $total,
             'male' => $male,
@@ -68,7 +68,7 @@ class ReportDataController extends Controller
         $female = $preliPassed->where('gender', 2)->count();
         $tgender = $preliPassed->where('gender', 3)->count();
         
-        return view('reports.gender-wise-preli-passed',[
+        return view('reports-special-bcs.gender-wise-preli-passed',[
             'configs' => $configs,
             'totalRegistered' => $totalRegistered,
             'totalPreliPassed' => $totalPreliPassed,
@@ -92,7 +92,7 @@ class ReportDataController extends Controller
         $female = $recommended->where('gender', 2)->count();
         $tgender = $recommended->where('gender', 3)->count();
         
-        return view('reports.gender-wise-recommended',[
+        return view('reports-special-bcs.gender-wise-recommended',[
             'configs' => $configs,
             'total' => $total,
             'male' => $male,
@@ -152,7 +152,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-registered-distrct-wise',[
+        return view('reports-special-bcs.gender-wise-registered-distrct-wise',[
             'configs' => $configs,
             'districtWise' => $districtWise,
             'grandTotal' => $grandTotal,
@@ -211,7 +211,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-selected-distrct-wise',[
+        return view('reports-special-bcs.gender-wise-selected-distrct-wise',[
             'configs' => $configs,
             'districtWise' => $districtWise,
             'grandTotal' => $grandTotal,
@@ -281,7 +281,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-registered-distrct-wise-div-group',[
+        return view('reports-special-bcs.gender-wise-registered-distrct-wise-div-group',[
             'configs' => $configs,
             'districtWise' => $districtWise,
             'grandTotal' => $grandTotal,
@@ -351,7 +351,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-selected-distrct-wise-div-group',[
+        return view('reports-special-bcs.gender-wise-selected-distrct-wise-div-group',[
             'configs' => $configs,
             'districtWise' => $districtWise,
             'grandTotal' => $grandTotal,
@@ -412,7 +412,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-registered-division-wise',[
+        return view('reports-special-bcs.gender-wise-registered-division-wise',[
             'configs' => $configs,
             'divisionWise' => $divisionWise,
             'grandTotal' => $grandTotal,
@@ -473,7 +473,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-selected-division-wise',[
+        return view('reports-special-bcs.gender-wise-selected-division-wise',[
             'configs' => $configs,
             'divisionWise' => $divisionWise,
             'grandTotal' => $grandTotal,
@@ -532,7 +532,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-selected-institute-wise',[
+        return view('reports-special-bcs.gender-wise-selected-institute-wise',[
             'configs' => $configs,
             'institutesWise' => $institutesWise,
             'grandTotal' => $grandTotal,
@@ -597,7 +597,7 @@ class ReportDataController extends Controller
                         )
                         ->first();
         
-        return view('reports.gender-wise-selected-others-institute-wise',[
+        return view('reports-special-bcs.gender-wise-selected-others-institute-wise',[
             'configs' => $configs,
             'institutesWise' => $institutesWise,
             'grandTotal' => $grandTotal,
@@ -642,7 +642,54 @@ class ReportDataController extends Controller
                     ->orderBy('age_group')
                     ->get();
         
-        return view('reports.age-wise-registered',[
+        return view('reports-special-bcs.age-wise-registered',[
+            'configs' => $configs,
+            'ageWise' => $ageWise,
+        ]);
+        
+    }
+
+
+    
+
+
+    public function ageWisePreliPassedCandidates()
+    {
+        $configs = Config::all();
+
+        $age_calculation_end_date = $configs->where('field', 'age_calculation_end_date')->first()['value'];
+        
+        $this->setTables( $configs );
+
+        $ageWise = DB::table(DB::raw("
+                        (
+                            SELECT
+                                *,
+                                TIMESTAMPDIFF(YEAR, dob, '{$age_calculation_end_date}') AS age
+                            FROM $this->preliPassedTable
+                            WHERE dob IS NOT NULL
+                        ) t
+                    "))
+                    ->select(
+                        DB::raw("
+                            CASE
+                                WHEN age BETWEEN 21 AND 23 THEN '21 - 23'
+                                WHEN age BETWEEN 24 AND 26 THEN '24 - 26'
+                                WHEN age BETWEEN 27 AND 29 THEN '27 - 29'
+                                WHEN age BETWEEN 30 AND 32 THEN '30 - 32'
+                                ELSE 'Other'
+                            END AS age_group
+                        "),
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN gender = 1 THEN 1 ELSE 0 END) as male"),
+                        DB::raw("SUM(CASE WHEN gender = 2 THEN 1 ELSE 0 END) as female"),
+                        DB::raw("SUM(CASE WHEN gender = 3 THEN 1 ELSE 0 END) as third_gender")
+                    )
+                    ->groupBy('age_group')
+                    ->orderBy('age_group')
+                    ->get();
+        
+        return view('reports-special-bcs.age-wise-preli-passed',[
             'configs' => $configs,
             'ageWise' => $ageWise,
         ]);
@@ -686,7 +733,7 @@ class ReportDataController extends Controller
                     ->orderBy('age_group')
                     ->get();
         
-        return view('reports.age-wise-selected',[
+        return view('reports-special-bcs.age-wise-selected',[
             'configs' => $configs,
             'ageWise' => $ageWise,
         ]);

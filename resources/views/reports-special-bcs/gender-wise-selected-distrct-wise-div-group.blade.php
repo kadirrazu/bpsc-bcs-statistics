@@ -19,7 +19,7 @@
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
                         <span class="text-danger fw-bold" style="font-size: 20px; ">
-                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}তম
                         </span>
                     </td>
                 </tr>

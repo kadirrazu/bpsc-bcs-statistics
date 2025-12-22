@@ -3,7 +3,7 @@
 <!-- Contents Starts Here -->
 
     <div class="pricing-header mx-auto text-center">
-      <h3>বাংলাদেশ সরকারী কর্ম কমিশন সচিবালয় এর বার্ষিক প্রতিবেদন প্রণয়নের জন্য সহায়ক রিপোর্ট</h3>
+      <h3>"বাংলাদেশ সরকারী কর্ম কমিশন" এর বার্ষিক প্রতিবেদন প্রণয়নের জন্য বিসিএস পরীক্ষা সংক্রান্ত সহায়ক রিপোর্ট / পরিসংখ্যান</h3>
       <p class="text-start">
         <strong>বিশেষ দ্রষ্টব্যঃ</strong> 
         <br>
@@ -14,15 +14,15 @@
           <tr>
             <th>রিপোর্টিং বিসিএস</th>
             <td>
-              <span class="text-info">  
-                {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value']) }}
+              <span class="text-danger fw-bold">  
+                {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value']) }}তম
               </span>
             </td>
           </tr>
           <tr>
             <th>রিপোর্টিং বিসিএস এর ধরণ</th>
             <td>
-              <span class="text-info">
+              <span class="text-primary fw-bold">
                 @if( strtolower( $configs->where('field', 'current_bcs_type')->first()['value'] ) == 'special' )
                   বিশেষ বিসিএস
                 @else
@@ -40,77 +40,35 @@
         <div class="card mb-4 box-shadow">
 
           <div class="card-header">
-            <h4 class="my-0 text-success">রিপোর্ট ম্যেনু</h4>
+            <h3 class="my-0 text-secondary fw-bolder">রিপোর্ট মেন্যু</h3>
           </div>
 
           <div class="card-body text-start">
-            <ul class="list-unstyled mt-3 mb-4 fs-menu-item">
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০১। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-passed-preli') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০২। প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-selected') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০৩। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-registered-district-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০৪। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-selected-district-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০৫। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-registered-district-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০৬। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-selected-district-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০৭। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-registered-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০৮। আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-selected-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ০৯। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-selected-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১০। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/geneder-wise-selected-others-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১১। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/age-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১২। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="{{ url('/age-wise-selected') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-                  ১৩। সুপারিশকৃত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
-                </a>
-              </li>
-            </ul>
+
+              <span class="text-danger fw-bold">
+                {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value']) }}তম
+              </span>
+
+              @if( strtolower( $configs->where('field', 'current_bcs_type')->first()['value'] ) == 'special' )
+                <span class="text-primary fw-bold">বিশেষ বিসিএস</span>
+              @else
+                <span class="text-primary fw-bold">সাধারণ বিসিএস</span>
+              @endif
+
+              পরীক্ষার পরিসংখ্যান সংক্রান্ত রিপোর্টসমূহ -
+
+
+            @if( strtolower( $configs->where('field', 'current_bcs_type')->first()['value'] ) == 'special' )
+
+              @include('report-menu-special-bcs')
+
+            @else
+
+              @include('report-menu-general-bcs')
+
+            @endif
+
+
           </div>
         </div>
         

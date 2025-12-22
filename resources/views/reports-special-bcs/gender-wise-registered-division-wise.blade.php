@@ -8,9 +8,9 @@
 
             <!-- Report Body -->
             <h3 class="report-title fw-bolder">
-                <span>রিপোর্ট ১১ - </span> 
+                <span>রিপোর্ট ০৮ - </span> 
                 <span class="text-info">
-                    সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others [999])
+                    আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগ ভিত্তিক)
                 </span>
             </h3>
 
@@ -19,7 +19,7 @@
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
                         <span class="text-danger fw-bold" style="font-size: 20px; ">
-                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}তম
                         </span>
                     </td>
                 </tr>
@@ -36,7 +36,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সর্বমোট সুপারিশকৃত প্রার্থীঃ</th>
+                    <th>সর্বমোট আবেদনকারী প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-success fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_total ) }}
@@ -44,7 +44,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সর্বমোট সুপারিশকৃত পুরুষ প্রার্থীঃ</th>
+                    <th>সর্বমোট আবেদনকারী পুরুষ প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-info fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_male ) }}
@@ -52,7 +52,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সর্বমোট সুপারিশকৃত মহিলা প্রার্থীঃ</th>
+                    <th>সর্বমোট আবেদনকারী মহিলা প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-primary fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_female ) }}
@@ -60,7 +60,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সর্বমোট সুপারিশকৃত তৃতীয় লিঙ্গের প্রার্থীঃ</th>
+                    <th>সর্বমোট আবেদনকারী তৃতীয় লিঙ্গের প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-secondary fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_third_gender ) }}
@@ -72,7 +72,7 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="6">
-                        সুপারিশকৃত প্রার্থীর সংখ্যা (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others [999])
+                        আবেদনকারী প্রার্থীর সংখ্যা (বিভাগ ভিত্তিক)
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
@@ -99,44 +99,42 @@
 
                 @endphp
 
-                @foreach( $institutesWise as $institute )
+                @foreach( $divisionWise as $division )
 
                 <tr class="fw-light text-center">
                     <td class="text-center">
                         {{ en_to_bn_number( $loop->index + 1 ) }}.
                     </td>
                     <td class="text-start">  
-                        {{ $institute->g_inst_name }}
-                        <br>
-                        <span class="subscript-small text-info">{{ $institute->name }}</span>
+                        {{ $division->name }}
                     </td>
                     <td>
-                        {{ en_to_bn_number( $institute->total_male ) }}
-                        @php $countMale += $institute->total_male  @endphp
+                        {{ en_to_bn_number( $division->total_male ) }}
+                        @php $countMale += $division->total_male  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $institute->total_male / $institute->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $division->total_male / $division->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td>
-                        {{ en_to_bn_number( $institute->total_female ) }}
-                        @php $counFemale += $institute->total_female  @endphp
+                        {{ en_to_bn_number( $division->total_female ) }}
+                        @php $counFemale += $division->total_female  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $institute->total_female / $institute->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $division->total_female / $division->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td>
-                        {{ en_to_bn_number( $institute->total_third_gender ) }}
-                        @php $countThirdGender += $institute->total_third_gender  @endphp
+                        {{ en_to_bn_number( $division->total_third_gender ) }}
+                        @php $countThirdGender += $division->total_third_gender  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $institute->total_third_gender / $institute->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $division->total_third_gender / $division->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td class="text-total">
-                        {{ en_to_bn_number( $institute->total ) }}
-                        @php $countTotal += $institute->total  @endphp
+                        {{ en_to_bn_number( $division->total ) }}
+                        @php $countTotal += $division->total  @endphp
                     </td>
                 </tr>
 

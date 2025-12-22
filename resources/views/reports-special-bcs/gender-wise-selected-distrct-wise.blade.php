@@ -8,9 +8,9 @@
 
             <!-- Report Body -->
             <h3 class="report-title fw-bolder">
-                <span>রিপোর্ট ১০ - </span> 
+                <span>রিপোর্ট ০৫ - </span> 
                 <span class="text-info">
-                    সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
+                    সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলা ভিত্তিক)
                 </span>
             </h3>
 
@@ -19,7 +19,7 @@
                     <th>বিসিএস পরীক্ষাঃ</th>
                     <td>
                         <span class="text-danger fw-bold" style="font-size: 20px; ">
-                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}
+                            {{ en_to_bn_number( $configs->where('field', 'current_bcs')->first()['value'] ) }}তম
                         </span>
                     </td>
                 </tr>
@@ -72,11 +72,11 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="6">
-                        সুপারিশকৃত প্রার্থীর সংখ্যা (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
+                        সুপারিশকৃত প্রার্থীর সংখ্যা (জেলা ভিত্তিক)
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
-                    <td colspan="2">বিভাগের নাম</td>
+                    <td colspan="2">জেলার নাম</td>
                     <td>পুরুষ <br>(সংখ্যা ও %)</td>
                     <td>মহিলা <br>(সংখ্যা ও %)</td>
                     <td>তৃতীয় লিঙ্গ <br>(সংখ্যা ও %)</td>
@@ -93,48 +93,48 @@
                 @php
 
                     $countMale = 0;
-                    $counFemale = 0;
+                    $countFemale = 0;
                     $countThirdGender = 0;
                     $countTotal = 0;
 
                 @endphp
 
-                @foreach( $institutesWise as $institute )
+                @foreach( $districtWise as $district )
 
                 <tr class="fw-light text-center">
                     <td class="text-center">
                         {{ en_to_bn_number( $loop->index + 1 ) }}.
                     </td>
                     <td class="text-start">  
-                        {{ $institute->name }}
+                        {{ $district->name }}
                     </td>
                     <td>
-                        {{ en_to_bn_number( $institute->total_male ) }}
-                        @php $countMale += $institute->total_male  @endphp
+                        {{ en_to_bn_number( $district->total_male ) }}
+                        @php $countMale += $district->total_male  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $institute->total_male / $institute->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $district->total_male / $district->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td>
-                        {{ en_to_bn_number( $institute->total_female ) }}
-                        @php $counFemale += $institute->total_female  @endphp
+                        {{ en_to_bn_number( $district->total_female ) }}
+                        @php $countFemale += $district->total_female  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $institute->total_female / $institute->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $district->total_female / $district->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td>
-                        {{ en_to_bn_number( $institute->total_third_gender ) }}
-                        @php $countThirdGender += $institute->total_third_gender  @endphp
+                        {{ en_to_bn_number( $district->total_third_gender ) }}
+                        @php $countThirdGender += $district->total_third_gender  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $institute->total_third_gender / $institute->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $district->total_third_gender / $district->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td class="text-total">
-                        {{ en_to_bn_number( $institute->total ) }}
-                        @php $countTotal += $institute->total  @endphp
+                        {{ en_to_bn_number( $district->total ) }}
+                        @php $countTotal += $district->total  @endphp
                     </td>
                 </tr>
 
@@ -151,10 +151,10 @@
                         </span>
                     </th>
                     <th>
-                        {{ en_to_bn_number( $counFemale ) }}
+                        {{ en_to_bn_number( $countFemale ) }}
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $counFemale / $countTotal ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $countFemale / $countTotal ) * 100) ) }}%
                         </span>
                     </th>
                     <th>
