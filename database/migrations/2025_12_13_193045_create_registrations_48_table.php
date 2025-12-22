@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('results48', function (Blueprint $table) {
+        Schema::create('registrations_48', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
             $table->integer('reg');
@@ -24,11 +24,6 @@ return new class extends Migration
             $table->integer('g_inst_code');
             $table->string('g_inst_name')->nullable();
             $table->integer('graduation_year')->nullable();
-            $table->integer('division_code')->nullable();
-            $table->string('cadre_category')->nullable();
-            $table->string('merit_gen')->nullable();
-            $table->string('p_f')->nullable();
-            $table->string('post_name')->nullable();
             $table->timestamps();
         });
     }
@@ -38,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('results48');
+        Schema::dropIfExists('registrations48');
     }
 };

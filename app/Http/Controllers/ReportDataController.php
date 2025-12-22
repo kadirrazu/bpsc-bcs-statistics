@@ -109,17 +109,17 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $districtWise = DB::table( $this->registrationTable )
-                    ->join('districts', $this->registrationTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->registrationTable}.district_code", '=', 'districts.code')
                     ->select(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name'
                     )
                     ->orderBy('districts.code')
@@ -127,17 +127,17 @@ class ReportDataController extends Controller
 
 
         $districtWiseTotal = DB::table( $this->registrationTable )
-                    ->join('districts', $this->registrationTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->registrationTable}.district_code", '=', 'districts.code')
                     ->select(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name'
                     );
 
@@ -168,17 +168,17 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $districtWise = DB::table( $this->finalResultTable )
-                    ->join('districts', $this->finalResultTable. '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->select(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name'
                     )
                     ->orderBy('districts.code')
@@ -186,17 +186,17 @@ class ReportDataController extends Controller
 
 
         $districtWiseTotal = DB::table( $this->finalResultTable )
-                    ->join('districts', $this->finalResultTable. '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->select(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name'
                     );
 
@@ -227,20 +227,20 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $districtWise = DB::table( $this->registrationTable )
-                    ->join('districts', $this->registrationTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->registrationTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name as div_name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name',
@@ -251,20 +251,20 @@ class ReportDataController extends Controller
 
 
         $districtWiseTotal = DB::table( $this->registrationTable )
-                    ->join('districts', $this->registrationTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->registrationTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name as div_name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->registrationTable . '.district_code',
+                        "{$this->registrationTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name',
@@ -297,20 +297,20 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $districtWise = DB::table( $this->finalResultTable )
-                    ->join('districts', $this->finalResultTable. '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name as div_name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name',
@@ -321,20 +321,20 @@ class ReportDataController extends Controller
 
 
         $districtWiseTotal = DB::table( $this->finalResultTable )
-                    ->join('districts', $this->finalResultTable. '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name as div_name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->finalResultTable. '.district_code',
+                        "{$this->finalResultTable}.district_code",
                         'districts.name',
                         'divisions.code',
                         'divisions.name',
@@ -367,15 +367,15 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $divisionWise = DB::table( $this->registrationTable )
-                    ->join('districts', $this->registrationTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->registrationTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
                         'divisions.code',
                         'divisions.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
                         'divisions.code',
@@ -386,15 +386,15 @@ class ReportDataController extends Controller
 
 
         $divisionWiseTotal = DB::table( $this->registrationTable )
-                    ->join('districts', $this->registrationTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->registrationTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
                         'divisions.code',
                         'divisions.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->registrationTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->registrationTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
                         'divisions.code',
@@ -428,15 +428,15 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $divisionWise = DB::table( $this->finalResultTable )
-                    ->join('districts', $this->finalResultTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
                         'divisions.code',
                         'divisions.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
                         'divisions.code',
@@ -447,15 +447,15 @@ class ReportDataController extends Controller
 
 
         $divisionWiseTotal = DB::table( $this->finalResultTable )
-                    ->join('districts', $this->finalResultTable . '.district_code', '=', 'districts.code')
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
                     ->select(
                         'divisions.code',
                         'divisions.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
                         'divisions.code',
@@ -489,17 +489,17 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $institutesWise = DB::table( $this->finalResultTable )
-                    ->join('institutes', $this->finalResultTable . '.g_inst_code', '=', 'institutes.code')
+                    ->join('institutes', "{$this->finalResultTable}.g_inst_code", '=', 'institutes.code')
                     ->select(
-                        $this->finalResultTable . '.g_inst_code',
+                        "{$this->finalResultTable}.g_inst_code",
                         'institutes.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->finalResultTable . '.g_inst_code',
+                        "{$this->finalResultTable}.g_inst_code",
                         'institutes.name'
                     )
                     ->orderBy('total', 'DESC')
@@ -507,17 +507,17 @@ class ReportDataController extends Controller
 
 
         $institutesWiseTotal = DB::table( $this->finalResultTable )
-                    ->join('institutes', $this->finalResultTable . '.g_inst_code', '=', 'institutes.code')
+                    ->join('institutes', "{$this->finalResultTable}.g_inst_code", '=', 'institutes.code')
                     ->select(
-                        $this->finalResultTable . '.g_inst_code',
+                        "{$this->finalResultTable}.g_inst_code",
                         'institutes.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->groupBy(
-                        $this->finalResultTable . '.g_inst_code',
+                        "{$this->finalResultTable}.g_inst_code",
                         'institutes.name'
                     );
 
@@ -548,20 +548,20 @@ class ReportDataController extends Controller
         $this->setTables( $configs );
 
         $institutesWise = DB::table( $this->finalResultTable )
-                    ->join('institutes', $this->finalResultTable . '.g_inst_code', '=', 'institutes.code')
+                    ->join('institutes', "{$this->finalResultTable}.g_inst_code", '=', 'institutes.code')
                     ->select(
-                        $this->finalResultTable . '.g_inst_code',
-                        $this->finalResultTable . '.g_inst_name',
+                        "{$this->finalResultTable}.g_inst_code",
+                        "{$this->finalResultTable}.g_inst_name",
                         'institutes.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where('g_inst_code', 999)
                     ->groupBy(
-                        $this->finalResultTable . '.g_inst_code',
-                        $this->finalResultTable . '.g_inst_name',
+                        "{$this->finalResultTable}.g_inst_code",
+                        "{$this->finalResultTable}.g_inst_name",
                         'institutes.name'
                     )
                     ->orderBy('total', 'DESC')
@@ -569,20 +569,20 @@ class ReportDataController extends Controller
 
 
         $institutesWiseTotal = DB::table( $this->finalResultTable )
-                    ->join('institutes', $this->finalResultTable . '.g_inst_code', '=', 'institutes.code')
+                    ->join('institutes', "{$this->finalResultTable}.g_inst_code", '=', 'institutes.code')
                     ->select(
-                        $this->finalResultTable . '.g_inst_code',
-                        $this->finalResultTable . '.g_inst_name',
+                        "{$this->finalResultTable}.g_inst_code",
+                        "{$this->finalResultTable}.g_inst_name",
                         'institutes.name',
                         DB::raw('COUNT(*) as total'),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 1 THEN 1 ELSE 0 END) as total_male"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 2 THEN 1 ELSE 0 END) as total_female"),
-                        DB::raw("SUM(CASE WHEN $this->finalResultTable.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where('g_inst_code', 999)
                     ->groupBy(
-                        $this->finalResultTable . '.g_inst_code',
-                        $this->finalResultTable . '.g_inst_name',
+                        "{$this->finalResultTable}.g_inst_code",
+                        "{$this->finalResultTable}.g_inst_name",
                         'institutes.name'
                     );
 
@@ -609,6 +609,8 @@ class ReportDataController extends Controller
     public function ageWiseAllRegisteredCandidates()
     {
         $configs = Config::all();
+
+        $age_calculation_end_date = $configs->where('field', 'age_calculation_end_date')->first()['value'];
         
         $this->setTables( $configs );
 
@@ -616,7 +618,7 @@ class ReportDataController extends Controller
                         (
                             SELECT
                                 *,
-                                TIMESTAMPDIFF(YEAR, dob, '2025-05-01') AS age
+                                TIMESTAMPDIFF(YEAR, dob, '{$age_calculation_end_date}') AS age
                             FROM $this->registrationTable
                             WHERE dob IS NOT NULL
                         ) t
@@ -651,6 +653,8 @@ class ReportDataController extends Controller
     public function ageWiseAllSelectedCandidates()
     {
         $configs = Config::all();
+
+        $age_calculation_end_date = $configs->where('field', 'age_calculation_end_date')->first()['value'];
         
         $this->setTables( $configs );
 
@@ -658,7 +662,7 @@ class ReportDataController extends Controller
                         (
                             SELECT
                                 *,
-                                TIMESTAMPDIFF(YEAR, dob, '2025-05-01') AS age
+                                TIMESTAMPDIFF(YEAR, dob, '{$age_calculation_end_date}') AS age
                             FROM $this->finalResultTable
                             WHERE dob IS NOT NULL
                         ) t

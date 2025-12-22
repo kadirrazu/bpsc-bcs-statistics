@@ -93,7 +93,7 @@
                 @php
 
                     $countMale = 0;
-                    $counFemale = 0;
+                    $countFemale = 0;
                     $countThirdGender = 0;
                     $countTotal = 0;
 
@@ -118,7 +118,7 @@
                     </td>
                     <td>
                         {{ en_to_bn_number( $district->total_female ) }}
-                        @php $counFemale += $district->total_female  @endphp
+                        @php $countFemale += $district->total_female  @endphp
                         <br>
                         <span class="text-primary">
                             {{ en_to_bn_number( sprintf('%.2f', ( $district->total_female / $district->total ) * 100) ) }}%
@@ -151,10 +151,10 @@
                         </span>
                     </th>
                     <th>
-                        {{ en_to_bn_number( $counFemale ) }}
+                        {{ en_to_bn_number( $countFemale ) }}
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $counFemale / $countTotal ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $countFemale / $countTotal ) * 100) ) }}%
                         </span>
                     </th>
                     <th>

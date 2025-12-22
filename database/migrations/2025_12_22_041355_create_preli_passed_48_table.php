@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registrations48', function (Blueprint $table) {
+        Schema::create('preli_passed_48', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
             $table->integer('reg');
@@ -24,7 +24,6 @@ return new class extends Migration
             $table->integer('g_inst_code');
             $table->string('g_inst_name')->nullable();
             $table->integer('graduation_year')->nullable();
-            $table->integer('division_code')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrations48');
+        Schema::dropIfExists('preli_passed_48');
     }
 };
