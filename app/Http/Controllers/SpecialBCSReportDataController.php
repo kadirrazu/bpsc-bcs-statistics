@@ -419,6 +419,67 @@ class SpecialBCSReportDataController extends Controller
         ]);
         
     }
+
+
+    public function genderWiseAllPreliPassedCandidatesDivisionWise()
+    {
+        $configs = Config::all();
+        
+        $this->setTables( $configs );
+
+        $divisionWisePreliPassed = DB::table( $this->preliPassedTable )
+                                ->join('districts', "{$this->preliPassedTable}.district_code", '=', 'districts.code')
+                                ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                                ->select(
+                                    'divisions.code',
+                                    'divisions.name',
+                                    DB::raw('COUNT(*) as total'),
+                                    DB::raw("SUM(CASE WHEN {$this->preliPassedTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                                    DB::raw("SUM(CASE WHEN {$this->preliPassedTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                                    DB::raw("SUM(CASE WHEN {$this->preliPassedTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                                )
+                                ->groupBy(
+                                    'divisions.code',
+                                    'divisions.name'
+                                )
+                                ->orderBy('divisions.code')
+                                ->get();
+
+
+        $divisionWisePreliPassedTotal = DB::table( $this->preliPassedTable )
+                                        ->join('districts', "{$this->preliPassedTable}.district_code", '=', 'districts.code')
+                                        ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                                        ->select(
+                                            'divisions.code',
+                                            'divisions.name',
+                                            DB::raw('COUNT(*) as total'),
+                                            DB::raw("SUM(CASE WHEN {$this->preliPassedTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                                            DB::raw("SUM(CASE WHEN {$this->preliPassedTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                                            DB::raw("SUM(CASE WHEN {$this->preliPassedTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                                        )
+                                        ->groupBy(
+                                            'divisions.code',
+                                            'divisions.name'
+                                        );
+
+
+        $grandTotal = DB::query()
+                        ->fromSub($divisionWisePreliPassedTotal, 't')
+                        ->select(
+                            DB::raw('SUM(total) as grand_total'),
+                            DB::raw('SUM(total_male) as grand_male'),
+                            DB::raw('SUM(total_female) as grand_female'),
+                            DB::raw('SUM(total_third_gender) as grand_third_gender'),
+                        )
+                        ->first();
+        
+        return view('reports-special-bcs.gender-wise-preli-passed-division-wise',[
+            'configs' => $configs,
+            'divisionWise' => $divisionWisePreliPassed,
+            'grandTotal' => $grandTotal,
+        ]);
+        
+    }
     
 
     public function genderWiseAllSelectedCandidatesDivisionWise()

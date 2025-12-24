@@ -33,6 +33,7 @@ Route::get('/sp-bcs-geneder-wise-registered-district-wise-div-group', [SpecialBC
 Route::get('/sp-bcs-geneder-wise-selected-district-wise-div-group', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesDistrctWiseDivGroup']);
 
 Route::get('/sp-bcs-geneder-wise-registered-division-wise', [SpecialBCSReportDataController::class, 'genderWiseAllRegisteredCandidatesDivisionWise']);
+Route::get('/sp-bcs-geneder-wise-preli-passed-division-wise', [SpecialBCSReportDataController::class, 'genderWiseAllPreliPassedCandidatesDivisionWise']);
 Route::get('/sp-bcs-geneder-wise-selected-division-wise', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesDivisionWise']);
 
 Route::get('/sp-bcs-geneder-wise-selected-institute-wise', [SpecialBCSReportDataController::class, 'genderWiseAllSelectedCandidatesInstituteWise']);

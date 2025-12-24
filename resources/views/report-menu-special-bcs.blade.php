@@ -40,33 +40,38 @@
         </a>
     </li>
     <li class="list-group-item">
+        <a href="{{ url('/sp-bcs-geneder-wise-preli-passed-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+            ০৯। প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
+        </a>
+    </li>
+    <li class="list-group-item">
         <a href="{{ url('/sp-bcs-geneder-wise-selected-division-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-            ০৯। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
+            ১০। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
         </a>
     </li>
     <li class="list-group-item">
         <a href="{{ url('/sp-bcs-geneder-wise-selected-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-            ১০। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
+            ১১। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক)
         </a>
     </li>
     <li class="list-group-item">
         <a href="{{ url('/sp-bcs-geneder-wise-selected-others-institute-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-            ১১। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
+            ১২। সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (শিক্ষা প্রতিষ্ঠান ভিত্তিক - Others)
         </a>
     </li>
     <li class="list-group-item">
         <a href="{{ url('/sp-bcs-age-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-            ১২। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+            ১৩। আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
         </a>
     </li>
     <li class="list-group-item">
         <a href="{{ url('/sp-bcs-age-wise-preli-passed') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-            ১৩। প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+            ১৪। প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
         </a>
     </li>
     <li class="list-group-item">
         <a href="{{ url('/sp-bcs-age-wise-selected') }}" target="_blank" class="text-decoration-none text-dark mb-2">
-            ১৪। সুপারিশকৃত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+            ১৫। সুপারিশকৃত প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
         </a>
     </li>
 </ul>
