@@ -21,14 +21,10 @@ return new class extends Migration
             $table->string('dob_ddmmyyyy')->nullable();
             $table->integer('district_code');
             $table->integer('b_subject');
-            $table->integer('g_inst_code');
+            $table->integer('g_inst_code')->nullable();
             $table->string('g_inst_name')->nullable();
-            $table->integer('graduation_year')->nullable();
-            $table->string('category')->nullable();
-            $table->string('merit_gen')->nullable();
-            $table->string('merit_tech')->nullable();
-            $table->string('cadre')->nullable();
-            $table->string('quota_status')->nullable();
+            $table->string('cadre_category')->nullable();
+            $table->integer('cadre_type')->nullable();
             $table->timestamps();
         });
     }

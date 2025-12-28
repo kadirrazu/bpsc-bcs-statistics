@@ -23,8 +23,8 @@ return new class extends Migration
             $table->integer('b_subject');
             $table->integer('g_inst_code')->nullable();
             $table->string('g_inst_name')->nullable();
-            $table->integer('graduation_year')->nullable();
-            $table->string('category')->nullable();
+            $table->string('cadre_category')->nullable();
+            $table->integer('cadre_type')->nullable();
             $table->timestamps();
         });
     }
