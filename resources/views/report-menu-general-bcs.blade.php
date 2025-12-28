@@ -1,3 +1,88 @@
+<div class="accordion mt-2" id="accordionGeneralBCSMenu">
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        ১# আবেদনকারী প্রার্থী সংক্রান্ত রিপোর্টসমূহ
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionGeneralBCSMenu">
+      <div class="accordion-body">
+        
+        <ul class="list-unstyled mt-3 mb-4 fs-menu-item list-group">
+            <li class="list-group-item">
+                <a href="{{ url('/1-1-gen-bcs-geneder-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০১/০১ - আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/1-2-gen-bcs-geneder-wise-registered-district-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০১/০২ - আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক)
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/1-3-gen-bcs-geneder-wise-registered-district-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০১/০৩ - আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলাভিত্তিক - বিভাগওয়ারী গ্রুপকৃত)
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/1-4-gen-bcs-geneder-wise-registered-div-wise') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০১/০৪ - আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (বিভাগভিত্তিক)
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/1-5-gen-bcs-age-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০১/০৫ - আবেদনকারী প্রার্থীদের বয়সভিত্তিক পরিসংখ্যান
+                </a>
+            </li>
+        </ul>
+
+      </div>
+    </div>
+  </div> <!-- End of .accordion-item -->
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        ২# প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থী সংক্রান্ত রিপোর্টসমূহ
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionGeneralBCSMenu">
+      <div class="accordion-body">
+        কনটেন্ট ২
+      </div>
+    </div>
+  </div> <!-- End of .accordion-item -->
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        ৩# লিখিত পরীক্ষায় উত্তীর্ণ প্রার্থী সংক্রান্ত রিপোর্টসমূহ
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionGeneralBCSMenu">
+      <div class="accordion-body">
+        কনটেন্ট ৩
+      </div>
+    </div>
+  </div> <!-- End of .accordion-item -->
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        ৪# সুপারিশকৃত প্রার্থী সংক্রান্ত রিপোর্টসমূহ
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionGeneralBCSMenu">
+      <div class="accordion-body">
+        কনটেন্ট ৪
+      </div>
+    </div>
+  </div> <!-- End of .accordion-item -->
+
+</div> <!-- End of .accordion -->
+
+<!--
 <ul class="list-unstyled mt-3 mb-4 fs-menu-item list-group">
     <li class="list-group-item">
         <a href="{{ url('/gen-bcs-geneder-wise-registered') }}" target="_blank" class="text-decoration-none text-dark mb-2">
@@ -70,3 +155,4 @@
         </a>
     </li>
 </ul>
+-->

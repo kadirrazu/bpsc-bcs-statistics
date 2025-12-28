@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\SpecialBCSReportDataController;
-use App\Http\Controllers\GeneralBCSReportDataController;
 use App\Http\Controllers\ReportMenuController;
+use App\Http\Controllers\SpecialBCSReportDataController;
+use App\Http\Controllers\GeneralBCSRegisteredReportDataController;
 
 //Helper Functions for Global Use
 
@@ -47,6 +47,21 @@ Route::get('/sp-bcs-age-wise-selected', [SpecialBCSReportDataController::class, 
 
 /* General BCS Handling Routes Starts Here */
 
-Route::get('/gen-bcs-geneder-wise-registered', [GeneralBCSReportDataController::class, 'genderWiseAllRegisteredCandidates']);
+//Registerd Candidates Dealing
+Route::get('/1-1-gen-bcs-geneder-wise-registered', [GeneralBCSRegisteredReportDataController::class, 'genderWiseAllRegisteredCandidates']);
+Route::get('/1-2-gen-bcs-geneder-wise-registered-district-wise', [GeneralBCSRegisteredReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWise']);
+Route::get('/1-3-gen-bcs-geneder-wise-registered-district-wise-div-group', [GeneralBCSRegisteredReportDataController::class, 'genderWiseAllRegisteredCandidatesDistrctWiseDivGroup']);
+Route::get('/1-4-gen-bcs-geneder-wise-registered-div-wise', [GeneralBCSRegisteredReportDataController::class, 'genderWiseAllRegisteredCandidatesDivisionWise']);
+Route::get('/1-5-gen-bcs-age-wise-registered', [GeneralBCSRegisteredReportDataController::class, 'ageWiseAllRegisteredCandidates']);
+
+
+//Preli Passed Candidates Dealing
+
+
+//Written Passed Candidates Dealing
+
+
+//Finally Recommended Candidates Dealing
+
 
 /* General BCS Handling Routes Ends Here */

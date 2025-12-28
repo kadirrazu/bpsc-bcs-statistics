@@ -711,9 +711,6 @@ class SpecialBCSReportDataController extends Controller
     }
 
 
-    
-
-
     public function ageWisePreliPassedCandidates()
     {
         $configs = Config::all();

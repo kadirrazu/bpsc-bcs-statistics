@@ -7,12 +7,16 @@
             <div class="col-md-12">
 
             <!-- Report Body -->
-            <h3 class="report-title fw-bolder">
-                <span>রিপোর্ট ০১ - </span> 
+            <h4 class="report-title fw-bolder text-center">
+                <span>রিপোর্ট ০১/০১</span> 
+            </h4>
+            <h4 class="report-title fw-bolder text-center">
                 <span class="text-info">
                     আবেদনকারী প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান
                 </span>
-            </h3>
+            </h4>
+
+            <hr>
 
             <table class="table table-bordered insight-table">
                 <tr>
