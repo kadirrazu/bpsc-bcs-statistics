@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('g_inst_name')->nullable();
             $table->string('cadre_category')->nullable();
             $table->integer('cadre_type')->nullable();
-            $table->integer('recommended_candre')->nullable();
-            $table->integer('recommended_quota')->nullable();
+            $table->string('assigned_cadre')->nullable();
+            $table->string('assigned_quota')->nullable();
             $table->timestamps();
         });
     }

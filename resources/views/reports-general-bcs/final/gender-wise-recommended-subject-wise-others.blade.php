@@ -5,14 +5,14 @@
     <div class="container report-container">
         <div class="row">
             <div class="col-md-12">
-                
+
             <!-- Report Body -->
             <h4 class="report-title fw-bolder text-center">
-                <span>রিপোর্ট ০২/০২</span> 
+                <span>রিপোর্ট ০৪/০৭</span> 
             </h4>
             <h4 class="report-title fw-bolder text-center">
                 <span class="text-info">
-                    প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান (জেলা ভিত্তিক)
+                    সুপারিশকৃত প্রার্থীদের অধীত বিষয়ের জেন্ডারভিত্তিক পরিসংখ্যান [Others - 999]
                 </span>
             </h4>
 
@@ -50,7 +50,7 @@
                 <tr>
                     <th>সর্বমোট পুরুষ প্রার্থীঃ</th>
                     <td class="fw-bold">
-                        <span class="text-primary fs-expanded">
+                        <span class="text-info fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_male ) }}
                         </span>
                     </td>
@@ -58,7 +58,7 @@
                 <tr>
                     <th>সর্বমোট মহিলা প্রার্থীঃ</th>
                     <td class="fw-bold">
-                        <span class="text-info fs-expanded">
+                        <span class="text-primary fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_female ) }}
                         </span>
                     </td>
@@ -76,11 +76,11 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="6">
-                        প্রাথমিক বাছাই (প্রিলিমিলারি) পরীক্ষায় উত্তীর্ণ প্রার্থীর সংখ্যা (জেলা ভিত্তিক)
+                        সুপারিশকৃত প্রার্থীদের অধীত বিষয়ের জেন্ডারভিত্তিক পরিসংখ্যান [Others - 999]
                     </td>
                 </tr>
                 <tr class="fw-bold text-center">
-                    <td colspan="2">জেলার নাম</td>
+                    <td colspan="2">বিভাগের নাম</td>
                     <td>পুরুষ <br>(সংখ্যা ও %)</td>
                     <td>মহিলা <br>(সংখ্যা ও %)</td>
                     <td>তৃতীয় লিঙ্গ <br>(সংখ্যা ও %)</td>
@@ -97,48 +97,48 @@
                 @php
 
                     $countMale = 0;
-                    $countFemale = 0;
+                    $counFemale = 0;
                     $countThirdGender = 0;
                     $countTotal = 0;
 
                 @endphp
 
-                @foreach( $districtWise as $district )
+                @foreach( $divisionWise as $division )
 
                 <tr class="fw-light text-center">
                     <td class="text-center">
                         {{ en_to_bn_number( $loop->index + 1 ) }}.
                     </td>
                     <td class="text-start">  
-                        {{ strtoupper( $district->name ) }}
+                        {{ strtoupper( $division->name ) }}
                     </td>
                     <td>
-                        {{ en_to_bn_number( $district->total_male ) }}
-                        @php $countMale += $district->total_male  @endphp
+                        {{ en_to_bn_number( $division->total_male ) }}
+                        @php $countMale += $division->total_male  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $district->total_male / $district->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $division->total_male / $division->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td>
-                        {{ en_to_bn_number( $district->total_female ) }}
-                        @php $countFemale += $district->total_female  @endphp
+                        {{ en_to_bn_number( $division->total_female ) }}
+                        @php $counFemale += $division->total_female  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $district->total_female / $district->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $division->total_female / $division->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td>
-                        {{ en_to_bn_number( $district->total_third_gender ) }}
-                        @php $countThirdGender += $district->total_third_gender  @endphp
+                        {{ en_to_bn_number( $division->total_third_gender ) }}
+                        @php $countThirdGender += $division->total_third_gender  @endphp
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $district->total_third_gender / $district->total ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $division->total_third_gender / $division->total ) * 100) ) }}%
                         </span>
                     </td>
                     <td class="text-total">
-                        {{ en_to_bn_number( $district->total ) }}
-                        @php $countTotal += $district->total  @endphp
+                        {{ en_to_bn_number( $division->total ) }}
+                        @php $countTotal += $division->total  @endphp
                     </td>
                 </tr>
 
@@ -155,10 +155,10 @@
                         </span>
                     </th>
                     <th>
-                        {{ en_to_bn_number( $countFemale ) }}
+                        {{ en_to_bn_number( $counFemale ) }}
                         <br>
                         <span class="text-primary">
-                            {{ en_to_bn_number( sprintf('%.2f', ( $countFemale / $countTotal ) * 100) ) }}%
+                            {{ en_to_bn_number( sprintf('%.2f', ( $counFemale / $countTotal ) * 100) ) }}%
                         </span>
                     </th>
                     <th>

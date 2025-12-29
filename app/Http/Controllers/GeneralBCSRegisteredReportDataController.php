@@ -10,18 +10,12 @@ class GeneralBCSRegisteredReportDataController extends Controller
 {
     
     public $registrationTable = ''; //reg-all
-    public $preliPassedTable = '';  //reg-all-preli
-    public $writtenPassedTable = '';  //reg-all-written
-    public $finalResultTable = ''; //select-all
 
     private function setTables( $configs )
     {
         $currentBcsNumber = $configs->where('field', 'current_bcs')->first()['value'];
 
         $this->registrationTable = 'registrations_' . $currentBcsNumber;
-        $this->preliPassedTable = 'preli_passed_' . $currentBcsNumber;
-        $this->writtenPassedTable = 'written_passed_' . $currentBcsNumber;
-        $this->finalResultTable = 'final_result_' . $currentBcsNumber;
     }
 
     

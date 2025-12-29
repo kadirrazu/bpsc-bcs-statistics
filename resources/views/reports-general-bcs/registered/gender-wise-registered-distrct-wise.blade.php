@@ -110,7 +110,7 @@
                         {{ en_to_bn_number( $loop->index + 1 ) }}.
                     </td>
                     <td class="text-start">  
-                        {{ $district->name }}
+                        {{ strtoupper( $district->name ) }}
                     </td>
                     <td>
                         {{ en_to_bn_number( $district->total_male ) }}
