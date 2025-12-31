@@ -173,6 +173,16 @@
                     রিপোর্ট ০৪/০৮ - সাধারণ ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
                 </a>
             </li>
+            <li class="list-group-item">
+                <a href="{{ url('/4-9-gen-bcs-gender-wise-recommended-technical-cadre-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/০৯ - কারিগরি ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/4-10-gen-bcs-gender-wise-recommended-education-cadre-wise-div-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/১০ - সাধারণ শিক্ষা/কারিগরি শিক্ষা ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
+                </a>
+            </li>
         </ul>
 
       </div>

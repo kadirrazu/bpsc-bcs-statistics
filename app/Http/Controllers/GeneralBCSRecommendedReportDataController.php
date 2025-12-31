@@ -406,55 +406,61 @@ class GeneralBCSRecommendedReportDataController extends Controller
         
         $this->setTables( $configs );
 
-        $districtWise = DB::table( $this->finalResultTable )
+        $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadre_type', '1'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
+                        'cadres.cadre_name',
                     )
                     ->orderBy("{$this->finalResultTable}.assigned_cadre")
                     ->orderBy('divisions.code')
                     ->get();
 
 
-        $districtWiseTotal = DB::table( $this->finalResultTable )
+        $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadre_type', '1'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
+                        'cadres.cadre_name',
                     );
 
 
         $grandTotal = DB::query()
-                        ->fromSub($districtWiseTotal, 't')
+                        ->fromSub($cadreWiseTotal, 't')
                         ->select(
                             DB::raw('SUM(total) as grand_total'),
                             DB::raw('SUM(total_male) as grand_male'),
@@ -465,7 +471,169 @@ class GeneralBCSRecommendedReportDataController extends Controller
         
         return view('reports-general-bcs.final.gender-wise-recommended-general-cadre-wise-div-group',[
             'configs' => $configs,
-            'districtWise' => $districtWise,
+            'cadreWise' => $cadreWise,
+            'grandTotal' => $grandTotal,
+        ]);
+        
+    }
+
+
+    public function genderWiseAllRecommendedCandidatesTechnicalCadreWiseDivGroup()
+    {
+        $configs = Config::all();
+        
+        $this->setTables( $configs );
+
+        $cadreWise = DB::table( $this->finalResultTable )
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
+                    ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
+                    ->select(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'divisions.name as div_name',
+                        'cadres.cadre_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->where(
+                        'cadres.cadre_type', 'TT'
+                    )
+                    ->groupBy(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'div_name',
+                        'cadres.cadre_name',
+                    )
+                    ->orderBy("{$this->finalResultTable}.assigned_cadre")
+                    ->orderBy('divisions.code')
+                    ->get();
+
+
+        $cadreWiseTotal = DB::table( $this->finalResultTable )
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
+                    ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
+                    ->select(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'divisions.name as div_name',
+                        'cadres.cadre_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->where(
+                        'cadres.cadre_type', 'TT'
+                    )
+                    ->groupBy(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'div_name',
+                        'cadres.cadre_name',
+                    );
+
+
+        $grandTotal = DB::query()
+                        ->fromSub($cadreWiseTotal, 't')
+                        ->select(
+                            DB::raw('SUM(total) as grand_total'),
+                            DB::raw('SUM(total_male) as grand_male'),
+                            DB::raw('SUM(total_female) as grand_female'),
+                            DB::raw('SUM(total_third_gender) as grand_third_gender'),
+                        )
+                        ->first();
+        
+        return view('reports-general-bcs.final.gender-wise-recommended-technical-cadre-wise-div-group',[
+            'configs' => $configs,
+            'cadreWise' => $cadreWise,
+            'grandTotal' => $grandTotal,
+        ]);
+        
+    }
+
+
+    public function genderWiseAllRecommendedCandidatesEducationCadreWiseDivGroup()
+    {
+        $configs = Config::all();
+        
+        $this->setTables( $configs );
+
+        $cadreWise = DB::table( $this->finalResultTable )
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
+                    ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
+                    ->select(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'divisions.name as div_name',
+                        'cadres.cadre_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->where(
+                        'cadres.cadre_type', 'ED'
+                    )
+                    ->orWhere(
+                        'cadres.cadre_type', 'ET'
+                    )
+                    ->groupBy(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'div_name',
+                        'cadres.cadre_name',
+                    )
+                    ->orderBy("{$this->finalResultTable}.assigned_cadre")
+                    ->orderBy('divisions.code')
+                    ->get();
+
+
+        $cadreWiseTotal = DB::table( $this->finalResultTable )
+                    ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
+                    ->join('divisions', 'districts.div_code', '=', 'divisions.code')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
+                    ->select(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'divisions.name as div_name',
+                        'cadres.cadre_name',
+                        DB::raw('COUNT(*) as total'),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
+                        DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
+                    )
+                    ->where(
+                        'cadres.cadre_type', 'ED'
+                    )
+                    ->orWhere(
+                        'cadres.cadre_type', 'ET'
+                    )
+                    ->groupBy(
+                        "{$this->finalResultTable}.assigned_cadre",
+                        'divisions.code',
+                        'div_name',
+                        'cadres.cadre_name',
+                    );
+
+
+        $grandTotal = DB::query()
+                        ->fromSub($cadreWiseTotal, 't')
+                        ->select(
+                            DB::raw('SUM(total) as grand_total'),
+                            DB::raw('SUM(total_male) as grand_male'),
+                            DB::raw('SUM(total_female) as grand_female'),
+                            DB::raw('SUM(total_third_gender) as grand_third_gender'),
+                        )
+                        ->first();
+        
+        return view('reports-general-bcs.final.gender-wise-recommended-education-cadre-wise-div-group',[
+            'configs' => $configs,
+            'cadreWise' => $cadreWise,
             'grandTotal' => $grandTotal,
         ]);
         

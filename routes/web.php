@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\ReportMenuController;
 use App\Http\Controllers\SpecialBCSReportDataController;
@@ -16,6 +17,11 @@ function en_to_bn_number($number) {
     $bn_digits = array('০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯');
     $converted_number = str_replace($en_digits, $bn_digits, $number);
     return $converted_number;
+}
+
+function get_cadre_name_by_abbr($abbr) {
+    $cadre = DB::table('cadres')->where('cadre_abbr', $abbr)->first();
+    return $cadre->cadre_name;
 }
 
 
@@ -82,5 +88,7 @@ Route::get('/4-5-gen-bcs-age-wise-recommended', [GeneralBCSRecommendedReportData
 Route::get('/4-6-gen-bcs-gender-wise-recommended-subject-wise', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesSubjectWise']);
 Route::get('/4-7-gen-bcs-gender-wise-recommended-subject-wise-others', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesSubjectWiseOthers']);
 Route::get('/4-8-gen-bcs-gender-wise-recommended-general-cadre-wise-div-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesGeneralCadreWiseDivGroup']);
+Route::get('/4-9-gen-bcs-gender-wise-recommended-technical-cadre-wise-div-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesTechnicalCadreWiseDivGroup']);
+Route::get('/4-10-gen-bcs-gender-wise-recommended-education-cadre-wise-div-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesEducationCadreWiseDivGroup']);
 
 /* General BCS Handling Routes Ends Here */

@@ -8,11 +8,11 @@
 
             <!-- Report Body -->
             <h4 class="report-title fw-bolder text-center">
-                <span>রিপোর্ট ০৪/০৮</span> 
+                <span>রিপোর্ট ০৪/১০</span> 
             </h4>
             <h4 class="report-title fw-bolder text-center">
                 <span class="text-info">
-                    সাধারণ ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
+                    সাধারণ শিক্ষা / কারিগরি শিক্ষা ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
                 </span>
             </h4>
 
@@ -40,7 +40,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সাধারণ ক্যাডারে সুপারিশপ্রাপ্ত সর্বমোট প্রার্থীঃ</th>
+                    <th>সুপারিশপ্রাপ্ত সর্বমোট প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-success fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_total ) }}
@@ -48,7 +48,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সাধারণ ক্যাডারে সুপারিশপ্রাপ্ত পুরুষ প্রার্থীঃ</th>
+                    <th>সুপারিশপ্রাপ্ত পুরুষ প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-info fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_male ) }}
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সাধারণ ক্যাডারে সুপারিশপ্রাপ্ত মহিলা প্রার্থীঃ</th>
+                    <th>সুপারিশপ্রাপ্ত মহিলা প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-primary fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_female ) }}
@@ -64,7 +64,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>সাধারণ ক্যাডারে সুপারিশপ্রাপ্ত তৃতীয় লিঙ্গের প্রার্থীঃ</th>
+                    <th>সুপারিশপ্রাপ্ত তৃতীয় লিঙ্গের প্রার্থীঃ</th>
                     <td class="fw-bold">
                         <span class="text-secondary fs-expanded">
                             {{ en_to_bn_number( $grandTotal->grand_third_gender ) }}
@@ -84,7 +84,7 @@
             <table class="table table-bordered">
                 <tr class="fw-bold text-center">
                     <td colspan="6">
-                        সাধারণ ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
+                        সাধারণ শিক্ষা / কারিগরি শিক্ষা ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
                     </td>
                 </tr>
                 <tr class="fw-bold text-start">
