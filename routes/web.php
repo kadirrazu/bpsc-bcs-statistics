@@ -91,4 +91,12 @@ Route::get('/4-8-gen-bcs-gender-wise-recommended-general-cadre-wise-div-group', 
 Route::get('/4-9-gen-bcs-gender-wise-recommended-technical-cadre-wise-div-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesTechnicalCadreWiseDivGroup']);
 Route::get('/4-10-gen-bcs-gender-wise-recommended-education-cadre-wise-div-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesEducationCadreWiseDivGroup']);
 
+Route::get('/4-11-gen-bcs-gender-wise-recommended-general-cadre-wise-dist-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesGeneralCadreWiseDistGroup']);
+Route::get('/4-12-gen-bcs-gender-wise-recommended-technical-cadre-wise-dist-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesTechnicalCadreWiseDistGroup']);
+Route::get('/4-13-gen-bcs-gender-wise-recommended-education-cadre-wise-dist-group', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesEducationCadreWiseDistGroup']);
+
+Route::get('/4-14-gen-bcs-gender-wise-recommended-general-cadre-wise-dist-group-combined', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesGeneralCadreWiseDistGroupCombined']);
+Route::get('/4-15-gen-bcs-gender-wise-recommended-technical-cadre-wise-dist-group-combined', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesTechnicalCadreWiseDistGroupCombined']);
+Route::get('/4-16-gen-bcs-gender-wise-recommended-education-cadre-wise-dist-group-combined', [GeneralBCSRecommendedReportDataController::class, 'genderWiseAllRecommendedCandidatesEducationCadreWiseDistGroupCombined']);
+
 /* General BCS Handling Routes Ends Here */

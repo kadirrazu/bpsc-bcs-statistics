@@ -183,6 +183,39 @@
                     রিপোর্ট ০৪/১০ - সাধারণ শিক্ষা/কারিগরি শিক্ষা ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [বিভাগওয়ারী]
                 </a>
             </li>
+
+            <li class="list-group-item">
+                <a href="{{ url('/4-11-gen-bcs-gender-wise-recommended-general-cadre-wise-dist-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/১১ - সাধারণ ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [জেলাওয়ারী]
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/4-12-gen-bcs-gender-wise-recommended-technical-cadre-wise-dist-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/১২ - কারিগরি ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [জেলাওয়ারী]
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/4-13-gen-bcs-gender-wise-recommended-education-cadre-wise-dist-group') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/১৩ - সাধারণ শিক্ষা/কারিগরি শিক্ষা ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [জেলাওয়ারী]
+                </a>
+            </li>
+
+            <li class="list-group-item">
+                <a href="{{ url('/4-14-gen-bcs-gender-wise-recommended-general-cadre-wise-dist-group-combined') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/১৪ - সাধারণ ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [জেলাওয়ারী - কম্বাইন্ড ক্যাডার]
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/4-15-gen-bcs-gender-wise-recommended-technical-cadre-wise-dist-group-combined') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/১৫ - কারিগরি ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [জেলাওয়ারী - কম্বাইন্ড ক্যাডার]
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ url('/4-16-gen-bcs-gender-wise-recommended-education-cadre-wise-dist-group-combined') }}" target="_blank" class="text-decoration-none text-dark mb-2">
+                    রিপোর্ট ০৪/১৬ - সাধারণ শিক্ষা/কারিগরি শিক্ষা ক্যাডারে সুপারিশকৃত প্রার্থীদের জেন্ডারভিত্তিক পরিসংখ্যান [জেলাওয়ারী - কম্বাইন্ড ক্যাডার]
+                </a>
+            </li>
+
         </ul>
 
       </div>
