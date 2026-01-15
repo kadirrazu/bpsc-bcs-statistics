@@ -409,25 +409,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'GG'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     )
                     ->orderBy("{$this->finalResultTable}.assigned_cadre")
                     ->orderBy('divisions.code')
@@ -437,25 +437,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'GG'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     );
 
 
@@ -487,25 +487,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'TT'
+                        'cadres.cadre_type', 'TT'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     )
                     ->orderBy("{$this->finalResultTable}.assigned_cadre")
                     ->orderBy('divisions.code')
@@ -515,25 +515,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'TT'
+                        'cadres.cadre_type', 'TT'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     );
 
 
@@ -565,28 +565,28 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'ED'
+                        'cadres.cadre_type', 'ED'
                     )
                     ->orWhere(
-                        'cadres_45.cadre_type', 'ET'
+                        'cadres.cadre_type', 'ET'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     )
                     ->orderBy("{$this->finalResultTable}.assigned_cadre")
                     ->orderBy('divisions.code')
@@ -596,28 +596,28 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'divisions.name as div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'ED'
+                        'cadres.cadre_type', 'ED'
                     )
                     ->orWhere(
-                        'cadres_45.cadre_type', 'ET'
+                        'cadres.cadre_type', 'ET'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'divisions.code',
                         'div_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     );
 
 
@@ -651,25 +651,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'districts.name as dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'GG'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     )
                     ->orderBy("{$this->finalResultTable}.assigned_cadre")
                     ->orderBy('districts.code')
@@ -679,25 +679,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'districts.name as dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'GG'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     );
 
 
@@ -729,25 +729,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'districts.name as dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'TT'
+                        'cadres.cadre_type', 'TT'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     )
                     ->orderBy("{$this->finalResultTable}.assigned_cadre")
                     ->orderBy('districts.code')
@@ -757,25 +757,25 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'districts.name as dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'TT'
+                        'cadres.cadre_type', 'TT'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     );
 
 
@@ -807,28 +807,28 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'districts.name as dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'ED'
+                        'cadres.cadre_type', 'ED'
                     )
                     ->orWhere(
-                        'cadres_45.cadre_type', 'ET'
+                        'cadres.cadre_type', 'ET'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     )
                     ->orderBy("{$this->finalResultTable}.assigned_cadre")
                     ->orderBy('districts.code')
@@ -838,28 +838,28 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'districts.name as dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                         DB::raw('COUNT(*) as total'),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 1 THEN 1 ELSE 0 END) as total_male"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 2 THEN 1 ELSE 0 END) as total_female"),
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'ED'
+                        'cadres.cadre_type', 'ED'
                     )
                     ->orWhere(
-                        'cadres_45.cadre_type', 'ET'
+                        'cadres.cadre_type', 'ET'
                     )
                     ->groupBy(
                         "{$this->finalResultTable}.assigned_cadre",
                         'districts.code',
                         'dist_name',
-                        'cadres_45.cadre_name',
+                        'cadres.cadre_name',
                     );
 
 
@@ -893,7 +893,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         'districts.code',
                         'districts.name as dist_name',
@@ -903,7 +903,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'GG'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         'districts.code',
@@ -916,7 +916,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         'districts.code',
                         'districts.name as dist_name',
@@ -926,7 +926,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'GG'
+                        'cadres.cadre_type', 'GG'
                     )
                     ->groupBy(
                         'districts.code',
@@ -962,7 +962,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         'districts.code',
                         'districts.name as dist_name',
@@ -972,7 +972,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'TT'
+                        'cadres.cadre_type', 'TT'
                     )
                     ->groupBy(
                         'districts.code',
@@ -985,7 +985,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         'districts.code',
                         'districts.name as dist_name',
@@ -995,7 +995,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'TT'
+                        'cadres.cadre_type', 'TT'
                     )
                     ->groupBy(
                         'districts.code',
@@ -1031,7 +1031,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWise = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         'districts.code',
                         'districts.name as dist_name',
@@ -1041,10 +1041,10 @@ class GeneralBCSRecommendedReportDataController extends Controller
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'ED'
+                        'cadres.cadre_type', 'ED'
                     )
                     ->orWhere(
-                        'cadres_45.cadre_type', 'ET'
+                        'cadres.cadre_type', 'ET'
                     )
                     ->groupBy(
                         'districts.code',
@@ -1057,7 +1057,7 @@ class GeneralBCSRecommendedReportDataController extends Controller
         $cadreWiseTotal = DB::table( $this->finalResultTable )
                     ->join('districts', "{$this->finalResultTable}.district_code", '=', 'districts.code')
                     ->join('divisions', 'districts.div_code', '=', 'divisions.code')
-                    ->join('cadres_45', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres_45.cadre_abbr')
+                    ->join('cadres', "{$this->finalResultTable}.assigned_cadre", '=', 'cadres.cadre_abbr')
                     ->select(
                         'districts.code',
                         'districts.name as dist_name',
@@ -1067,10 +1067,10 @@ class GeneralBCSRecommendedReportDataController extends Controller
                         DB::raw("SUM(CASE WHEN {$this->finalResultTable}.gender = 3 THEN 1 ELSE 0 END) as total_third_gender")
                     )
                     ->where(
-                        'cadres_45.cadre_type', 'ED'
+                        'cadres.cadre_type', 'ED'
                     )
                     ->orWhere(
-                        'cadres_45.cadre_type', 'ET'
+                        'cadres.cadre_type', 'ET'
                     )
                     ->groupBy(
                         'districts.code',

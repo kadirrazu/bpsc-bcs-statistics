@@ -20,7 +20,7 @@ function en_to_bn_number($number) {
 }
 
 function get_cadre_name_by_abbr($abbr) {
-    $cadre = DB::table('cadres')->where('cadre_abbr', $abbr)->first();
+    $cadre = DB::table('cadres_45')->where('cadre_abbr', $abbr)->first();
     return $cadre->cadre_name;
 }
 
